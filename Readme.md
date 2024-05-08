@@ -1,23 +1,17 @@
 # Simple Voting Smart Contract
 
-This smart contract implements a simple voting system where users can vote on a proposal within a specified period.
+## Overview
+
+The SimpleVoting contract enables a basic voting system on the Soroban blockchain platform. It allows for the initialization of a voting process and enables users to cast their votes within a specified period.
 
 ## Features
 
-- Initialize voting period and parameters.
-- Allow voters to cast their votes.
-- Track voting progress and calculate approval rate.
-
-## Error Handling
-
-This contract utilizes error codes to handle various scenarios, including:
-
-- Already initialized contract.
-- Conversion errors.
-- Expected storage keys.
-- Already voted.
-- Overflow conditions.
-- Closed voting periods.
+- **Initialization of Voting**: Initialize the voting process with parameters such as voting period, target approval rate, and total voters.
+- **Proposal Creation**: Create a proposal with voting end time, target approval rate, total voters count, and an empty list of voters upon initialization.
+- **Voting**: Users can cast their votes during the voting period, and each vote increments the vote count of the proposal.
+- **Vote Validation**: Ensure that users can only vote once and within the specified voting period.
+- **Approval Rate Calculation**: Calculate the approval rate based on the number of votes received compared to the total voters.
+- **Approval Status**: Determine whether the proposal is approved based on its approval rate.
 
 ## Usage
 
@@ -36,3 +30,6 @@ This contract utilizes error codes to handle various scenarios, including:
 - target_approval_rate_bps: Target approval rate in basis points.
 - total_voters: Total number of eligible voters.
 - voters: Map
+
+## Implementation Details
+The contract is implemented using the Soroban SDK and utilizes persistent storage for maintaining voting state. Event publishing is used for notifying interested parties about voting actions.
